@@ -14,3 +14,15 @@ At this point, I recommend not changing the existing Wazuh default Rule 594. We 
 </group>
 ```
 
+Tunning False positive rule please add this in local_rules.xml
+```
+<group name="local,sysmon,">
+  <rule id="100961" level="0">
+    <if_sid>61618</if_sid>
+    <field name="win.eventdata.image" type="pcre2">(?i)^c:\\{1,2}windows\\{1,2}system32\\{1,2}svchost\.exe$</field>
+    <field name="win.eventdata.commandLine" type="pcre2">(?i)svchost\.exe\S*\s+-k\s+\w+</field>
+    <field name="win.eventdata.user" type="pcre2">(?i)^nt authority\\{1,2}(system|local service|network service)$</field>
+    <description>svchost.exe started as a normal Windows service (parent missing in the Sysmon event): not suspicious</description>
+  </rule>
+</group>
+```
