@@ -26,3 +26,9 @@ Tunning False positive rule please add this in local_rules.xml
   </rule>
 </group>
 ```
+Make Firewall interface login rule id 81626 to rule level 12 to detect in AI
+
+```
+grep -rn "81626" /var/ossec/ruleset/rules/
+```
+then nano it and make this rule id to level 12
