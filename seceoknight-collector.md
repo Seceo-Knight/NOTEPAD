@@ -32,3 +32,12 @@ Make Firewall interface login rule id 81626 to rule level 12 to detect in AI
 grep -rn "81626" /var/ossec/ruleset/rules/
 ```
 then nano it and make this rule id to level 12
+
+
+-------------------------
+
+make ssh bruteforce attack to level 12 
+```
+nano /var/ossec/ruleset/rules/0095-sshd_rules.xml
+```
+then change rule level for rule id's - 5712 and 5763
