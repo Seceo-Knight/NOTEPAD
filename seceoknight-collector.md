@@ -41,3 +41,14 @@ make ssh bruteforce attack to level 12
 nano /var/ossec/ruleset/rules/0095-sshd_rules.xml
 ```
 then change rule level for rule id's - 5712 and 5763
+
+
+--------------------------
+
+## it will need to work with SOAR or the Active Response
+
+Run this command as a root user on WAZUH-MANAGER
+```
+F=/var/ossec/framework/python/lib/python3.10/site-packages/wazuh/core/utils.py; cp -p $F $F.bak-seceoknight && sed -i 's/pattern = r"(?:Wazuh )?v?(/pattern = r"(?:Wazuh |SeceoKnight )?v?(/' $F && grep -n 'SeceoKnight )' $F
+```
+It should print one line containing (?:Wazuh |SeceoKnight )?. The original is kept as utils.py.bak-seceoknight.
